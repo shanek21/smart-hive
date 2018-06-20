@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="48"
-   height="48"
-   viewBox="0 0 12.7 12.7"
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666666 8.4666666"
    version="1.1"
    id="svg6818"
    inkscape:version="0.92.3 (3ce5693, 2018-03-11)"
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="-24.89269"
-     inkscape:cy="25.406101"
+     inkscape:zoom="11.2"
+     inkscape:cx="7.5039808"
+     inkscape:cy="8.7744787"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,26 +56,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-284.3)">
+     transform="translate(0,-288.53334)">
     <path
        sodipodi:type="star"
-       style="opacity:1;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.975591;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#666666;fill-opacity:1;stroke:none;stroke-width:0.64892751;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path6848"
        sodipodi:sides="6"
-       sodipodi:cx="6.3499999"
-       sodipodi:cy="290.64999"
-       sodipodi:r1="6.326108"
-       sodipodi:r2="5.4785705"
+       sodipodi:cx="4.2333331"
+       sodipodi:cy="292.76667"
+       sodipodi:r1="4.2078962"
+       sodipodi:r2="3.644145"
        sodipodi:arg1="-1.0471976"
        sodipodi:arg2="-0.52359878"
        inkscape:flatsided="true"
        inkscape:rounded="0"
        inkscape:randomized="0"
-       d="m 9.5130536,285.17142 3.1630544,5.47857 -3.1630538,5.47857 -6.326108,0 -3.16305427,-5.47857 3.16305367,-5.47857 z" />
+       d="m 6.337281,289.12252 2.1039483,3.64414 -2.1039479,3.64415 -4.2078962,0 -2.10394832,-3.64415 2.10394792,-3.64414 z" />
     <g
        style="display:inline"
        id="g4750"
-       transform="matrix(0.275049,0,0,0.275049,-51.932521,257.74272)">
+       transform="matrix(0.18295255,0,0,0.18295255,-34.534071,270.87795)">
       <g
          id="g4816">
         <g
