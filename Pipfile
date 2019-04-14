@@ -8,6 +8,7 @@ paho-mqtt = "*"
 pymongo = "*"
 flask = "*"
 gunicorn = "*"
+dnspython = "*"
 
 [dev-packages]
 

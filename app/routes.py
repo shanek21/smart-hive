@@ -1,9 +1,12 @@
+import os
+from pprint import pprint
 from flask import Flask, render_template
 from pymongo import MongoClient
 
 
 # Setup MongoDB client
-mongo_client = MongoClient()
+mongo_uri = os.environ['MONGODB_URI'] + '/test?retryWrites=true'
+mongo_client = MongoClient(host=mongo_uri)
 db = mongo_client.test_database
 collection = db.test_collection
 
