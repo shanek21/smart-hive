@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1>Smart Hive</h1>
+  {% for entry in entries %}
+    <p>{{ entry }}</p>
+  {% endfor %}
+{% endblock %}
