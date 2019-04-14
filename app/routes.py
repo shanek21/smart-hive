@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 
 # Setup MongoDB client
-mongo_client = MongoClient(host='127.0.0.1', port=27017)
+mongo_client = MongoClient()
 db = mongo_client.test_database
 collection = db.test_collection
 
