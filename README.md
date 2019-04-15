@@ -1,6 +1,6 @@
-# smart-hive
+# smart-hive ![](media/final/bee_icon.png)
 
-The goal of this project is to collect, store, and visualize data about honeybee colonies. The visualization is available at [smart-hive.herokuapp.com](smart-hive.herokuapp.com).
+The goal of this project is to collect, store, and visualize data about honeybee colonies. The visualization is available at [smart-hive.herokuapp.com](https://smart-hive.herokuapp.com/).
 
 ## Setup
 
