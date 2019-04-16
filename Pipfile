@@ -9,6 +9,8 @@ pymongo = "*"
 flask = "*"
 gunicorn = "*"
 dnspython = "*"
+numpy = "*"
+matplotlib = "*"
 
 [dev-packages]
 
