@@ -31,12 +31,20 @@ def home():
 def get_data():
     entries = collection.find()
     entries_list = []
+    # format into valid json for get request
     for entry in entries:
         entry_json = {}
         entry_json["id"] = str(entry.get("_id"))
         entry_json["timestamp"] = str(entry.get("timestamp"))
-        entry_json["topic"] = entry.get("topic")
         entry_json["value"] = entry.get("value")
+
+        # separate hive name and variable name
+        topic = entry.get("topic")
+        slash_index = int(entry.get("topic").index('/'))
+        hive_name = topic[0:slash_index]
+        category = topic[slash_index+1:len(topic)]
+        entry_json["hive_name"] = hive_name
+        entry_json["topic"] = category
         entries_list.append(entry_json)
     entries_json = {}
     entries_json["data"] = entries_list
