@@ -2,6 +2,23 @@ GLOBAL = {}
 
 window.onload = function() {
   loadData();
+
+  $('.collapsible').click(function(){
+    console.log("clicked");
+    console.log($(this));
+    console.log($(this).siblings('.collapsible-content'));
+    if ($(this).hasClass("active")){
+      $(this).siblings('.collapsible-content').hide();
+      $(this).removeClass("active");
+      let text = $(this).html();
+      $(this).html("\u{002B}" + text.substring(1, text.length));
+    } else{
+      $(this).siblings('.collapsible-content').show();
+      $(this).addClass("active");
+      let text = $(this).html();
+      $(this).html("\u{2212}" + text.substring(1, text.length));
+    }
+  })
 };
 
 window.addEventListener("resize", createWeightSVG);
@@ -46,10 +63,10 @@ function createWeightSVG(){
   }
   if (GLOBAL.dataLoaded){
     let data = GLOBAL.data;
-    let window_width = $(window).width();
+    let window_width = $('#hive-weight').width();
     let svg_width = window_width * 0.9;
     let svg_height = 200;
-    let weightSVG = d3.select("#content")
+    let weightSVG = d3.select("#hive-weight")
       .append("svg")
       .attr("width", svg_width)
       .attr("height", svg_height)

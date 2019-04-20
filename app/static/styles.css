@@ -20,7 +20,6 @@ purple: #5a49b0
 
 body {
   background-color: #2d2d2d;
-  /* font-family: 'Muli script=latin rev=2', sans-serif; */
   font-weight: 300;
   font-family: 'Abel', sans-serif;
   font-family: 'Catamaran', sans-serif;
@@ -34,13 +33,17 @@ h1 {
 
 h2 {
   color: #999;
-  /* color:#cca506; */
+  margin-bottom: 10px;
+}
+
+p button {
+  color: #bbbbbb;
 }
 
 .header{
 	height:60px;
 	background-color:#cca506;
-  padding-left:20px;
+  padding-left:5%;
   padding-right:20px;
 }
 
@@ -64,5 +67,42 @@ h2 {
 }
 
 #content {
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 5%;
+  padding-right: 10%;
+}
+
+.collapsible {
+  background-color: #2d2d2d;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.collapsible:hover {
+  color: #cca506;
+}
+
+
+.collapsible-content {
+  color: #bbbbbb;
+  display: none;
+  font-size: 14px;
+  margin-top: 0px;
+}
+
+.collapsible-content p{
+  display: block;
+  margin-top: 2px;
+}
+
+#weightSVG {
+  padding-top: 20px;
+  display:inline-block;
 }

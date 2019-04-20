@@ -14,17 +14,17 @@
   <body>
     {% block content %}
       <div class="header">
-        <!-- <div id="logo"> -->
-          <img src="{{ url_for('static', filename='images/bee_icon_large.png')}}" alt="Bee Logo"/>
-        <!-- </div> -->
+        <img src="{{ url_for('static', filename='images/bee_icon_large.png')}}" alt="Bee Logo"/>
         <h1 id="title">IOBee</h1>
       </div>
       <div id="content">
-        <h2>Hive Weight</h2>
-        <!-- <a>Why does hive weight matter?</a> -->
-      <!-- <svg width="100" height="100" id="weight-svg">
-        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-      </svg> -->
+        <div id="hive-weight">
+          <h2>Hive Weight</h2>
+          <button class="collapsible">+ Why does hive weight matter?</button>
+          <div class="collapsible-content">
+            <p>Weighing the hives is a non-invasive way to quickly check on the bees. The weight of the hive measure how many bees there are and how much honey they have produced. In the spring, weight can help detemine how much honey the bees are producing. Then, going into winter, the bees need enough honey to get them through.</p>
+          </div>
+        </div>
       </div>
     {% endblock %}
   </body>
