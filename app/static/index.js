@@ -178,7 +178,7 @@ function createWeightSVG(){
           $hover.append($('<br>'));
           $hover.append($weight);
           $hover.parent().css({position: 'relative'});
-          $hover.css({top: y_pos+52, left: x_pos-18, position:'absolute'});
+          $hover.css({top: y_pos+47, left: x_pos-18, position:'absolute'});
           $hover.show();
         })
         dataPoint.on("mouseout", function(d){
