@@ -36,7 +36,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-p button {
+p {
   color: #bbbbbb;
 }
 
@@ -105,4 +105,19 @@ p button {
 #weightSVG {
   padding-top: 20px;
   display:inline-block;
+}
+
+#weight-hover {
+  background-color: #cca506;
+  display:inline-block;
+}
+
+#weight-hover p{
+  color: #2d2d2d;
+  margin: 0px;
+  padding: 2px;
+  display:inline-block;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
 }

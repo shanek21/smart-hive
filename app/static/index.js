@@ -4,14 +4,12 @@ window.onload = function() {
   loadData();
 
   $('.collapsible').click(function(){
-    console.log("clicked");
-    console.log($(this));
-    console.log($(this).siblings('.collapsible-content'));
     if ($(this).hasClass("active")){
       $(this).siblings('.collapsible-content').hide();
       $(this).removeClass("active");
       let text = $(this).html();
       $(this).html("\u{002B}" + text.substring(1, text.length));
+      // $(this).html("\u{2571}\u{2572}" + text.substring(1, text.length));
     } else{
       $(this).siblings('.collapsible-content').show();
       $(this).addClass("active");
@@ -25,12 +23,15 @@ window.addEventListener("resize", createWeightSVG);
 
 function loadData() {
   // console.log("load data");
+  let loading = $('<p>').attr("id", "loading-weight").html("Loading...");
+  $("#hive-weight").append(loading);
 
   // send get request
   var xhr = new XMLHttpRequest();
   let url = '/get-data/'
   xhr.open('GET', url);
   xhr.onload = function () {
+
     // after the response
     console.log("data loaded");
     // console.log(this.responseText);
@@ -62,6 +63,7 @@ function createWeightSVG(){
     $( "#weightSVG" ).remove();
   }
   if (GLOBAL.dataLoaded){
+    $( "#loading-weight" ).remove();
     let data = GLOBAL.data;
     let window_width = $('#hive-weight').width();
     let svg_width = window_width * 0.9;
@@ -71,6 +73,10 @@ function createWeightSVG(){
       .attr("width", svg_width)
       .attr("height", svg_height)
       .attr("id", "weightSVG")
+    let svg_hover = $('<div>')
+      .attr('id', 'weight-hover')
+      .attr('display', 'none');
+    $('#hive-weight').append(svg_hover);
 
     // setup bounds
     console.log(data);
@@ -118,7 +124,7 @@ function createWeightSVG(){
       .attr("y1", y_min)
       .attr("x2", x_min)
       .attr("y2", y_max)
-      .style("stroke", "999999");
+      .style("stroke", "#999999");
     weightSVG.append("text")
       .text(formatDate(minDate))
       .attr("x", x_min)
@@ -156,16 +162,35 @@ function createWeightSVG(){
       weightEntries[hiveName].forEach(function(entry){
         let date = new Date(entry.timestamp)
         let weight = entry.value
+        let x_pos = map_range(date.getTime(), minDate.getTime(), maxDate.getTime(), x_min, x_max)
+        let y_pos = map_range(weight, minWeight, maxWeight, y_min, y_max);
         let dataPoint = weightSVG.append("circle")
-          .attr("cx", map_range(date.getTime(), minDate.getTime(), maxDate.getTime(), x_min, x_max))
-          .attr("cy", map_range(weight, minWeight, maxWeight, y_min, y_max))
+          .attr("cx", x_pos)
+          .attr("cy", y_pos)
           .attr("r", 2)
           .style("fill", color);
+        dataPoint.on("mouseover", function(d){
+          let $hover = $('#weight-hover');
+          let $date = $('<p>').html(formatDateDay(date));
+          let $weight = $('<p>').html(Math.round(weight) + " lb")
+          dataPoint.attr("r", 7);
+          $hover.append($date);
+          $hover.append($('<br>'));
+          $hover.append($weight);
+          $hover.parent().css({position: 'relative'});
+          $hover.css({top: y_pos+52, left: x_pos-18, position:'absolute'});
+          $hover.show();
+        })
+        dataPoint.on("mouseout", function(d){
+          dataPoint.attr("r", 2)
+          let $hover = $('#weight-hover');
+          $hover.empty();
+          $hover.hide();
+        })
         GLOBAL.weight[hiveName].push(dataPoint)
 
         lastHiveWeight = weight;
       })
-      console.log(lastHiveWeight);
       let nameLabel = weightSVG.append("text")
         .text(hiveName)
         .attr("x", x_max + 5)
@@ -174,7 +199,6 @@ function createWeightSVG(){
         .style("font-weight", "bold")
       nameLabels.push(nameLabel);
     })
-    console.log(nameLabels);
 
     // sort by vertical order of names
     nameLabels.sort(function(a,b){
@@ -184,7 +208,6 @@ function createWeightSVG(){
     for (let n = 1; n < nameLabels.length; n++){
       let prev_y = Number(nameLabels[n-1].attr("y"))
       let current_y = Number(nameLabels[n].attr("y"))
-      console.log(prev_y, current_y, prev_y+50);
       if (current_y < prev_y+15){
         nameLabels[n].attr("y", prev_y+15);
       }
@@ -199,5 +222,9 @@ function map_range(value, low1, high1, low2, high2) {
 }
 
 function formatDate(date) {
-  return date.toLocaleString('en-us', { month: 'long' }) + " " + date.getFullYear();
+  return date.toLocaleString('en-us', { month: 'short' }) + " " + date.getFullYear();
+}
+
+function formatDateDay(date) {
+  return date.toLocaleString('en-us', { month: 'short' }) + " " + date.getDate()// + " " + date.getFullYear();
 }
