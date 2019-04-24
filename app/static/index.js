@@ -1,8 +1,11 @@
+// holds all the global variables to prevent confusion later
 GLOBAL = {}
 
+/** When the page loads, load data and set up UI */
 window.onload = function() {
   loadData();
 
+  // set up toggling listeners
   $('.collapsible').click(function(){
     if ($(this).hasClass("active")){
       $(this).siblings('.collapsible-content').hide();
@@ -19,8 +22,10 @@ window.onload = function() {
   })
 };
 
+/** Resize when resized */
 window.addEventListener("resize", createWeightSVG);
 
+/** Get request to get data */
 function loadData() {
   // console.log("load data");
   let loading = $('<p>').attr("id", "loading-weight").html("Loading...");
@@ -41,6 +46,7 @@ function loadData() {
   xhr.send()
 }
 
+/** Convert the string from the get request to something usable */
 function parseData(dataString){
   // console.log(dataString);
   dataString = dataString.replace(/'/g, '"');
@@ -52,10 +58,9 @@ function parseData(dataString){
 
   createWeightSVG();
 
-
-
 }
 
+/** Build the graph to display weight */
 function createWeightSVG(){
   console.log("create weight svg");
   // remove old viz if recreating
@@ -88,6 +93,7 @@ function createWeightSVG(){
     GLOBAL.hives = []
     data["data"].forEach(function(entry){
       let date = new Date(entry.timestamp)
+      // for testing with fake data, reduces the number of points
       if (entry.topic == "weight" && date.getHours()==0){
 
         let weight = entry.value
@@ -217,14 +223,17 @@ function createWeightSVG(){
 
 }
 
-function map_range(value, low1, high1, low2, high2) {
+/** Convert a value on one scale to a value on scale 2 */
+function mapRange(value, low1, high1, low2, high2) {
   return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
+/** Take a js date and return a nicely formatted Month YYYY */
 function formatDate(date) {
   return date.toLocaleString('en-us', { month: 'short' }) + " " + date.getFullYear();
 }
 
+/** Take a js date and return a nicely formatted DD Month */
 function formatDateDay(date) {
   return date.toLocaleString('en-us', { month: 'short' }) + " " + date.getDate()// + " " + date.getFullYear();
 }

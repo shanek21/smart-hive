@@ -14,7 +14,6 @@ from pymongo import MongoClient
 #   environment variables, but if you want to run this code locally, then you will need to ask
 #   for the secret MongoDB URI we use.
 mongo_uri = os.environ['MONGODB_URI']
-print(mongo_uri)
 mongo_client = MongoClient(mongo_uri)
 db = mongo_client.test_database # use a test database for now
 collection = db.test_collection # use a test collection for now
@@ -26,7 +25,9 @@ def home():
   entries = collection.find()
   return render_template('home.html', entries=entries)
 
-# send database information in GET request
+"""
+Send database information in GET request.
+"""
 @app.route('/get-data/', methods=['GET'])
 def get_data():
     entries = collection.find()
@@ -34,17 +35,14 @@ def get_data():
     # format into valid json for get request
     for entry in entries:
         entry_json = {}
-        entry_json["id"] = str(entry.get("_id"))
-        entry_json["timestamp"] = str(entry.get("timestamp"))
-        entry_json["value"] = entry.get("value")
+        entry_json['id'] = str(entry['_id'])
+        entry_json['timestamp'] = str(entry['timestamp'])
+        entry_json['value'] = entry['value']
 
         # separate hive name and variable name
-        topic = entry.get("topic")
-        slash_index = int(entry.get("topic").index('/'))
-        hive_name = topic[0:slash_index]
-        category = topic[slash_index+1:len(topic)]
-        entry_json["hive_name"] = hive_name
-        entry_json["topic"] = category
+        hive_name, _, category = entry['topic'].partition('/')
+        entry_json['hive_name'] = hive_name
+        entry_json['topic'] = category
         entries_list.append(entry_json)
     entries_json = {}
     entries_json["data"] = entries_list
