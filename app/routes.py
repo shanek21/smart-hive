@@ -45,7 +45,7 @@ def get_data():
         entry_json['topic'] = category
         entries_list.append(entry_json)
     entries_json = {}
-    entries_json["data"] = entries_list
+    entries_json['data'] = entries_list
     return str(entries_json)
 
 
