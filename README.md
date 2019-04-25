@@ -5,7 +5,11 @@ The goal of this project is to collect, store, and visualize data about honeybee
 ## Setup
 
 ```bash
-$ sudo apt install python3.6 python3-pip
+$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt update
+$ sudo apt install python3.7 python3.7-dev python3-pip
 $ pip install --user pipenv
 $ pipenv install
 $ pipenv shell
