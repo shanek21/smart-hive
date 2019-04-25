@@ -1,0 +1,7 @@
+#!/bin/bash
+
+script_dir=$(dirname $(readlink -f $0))
+src_dir=$script_dir/../src/
+
+# Modify all files in the Python source directory to comply with PEP8 standards.
+autopep8 $src_dir --recursive --in-place --verbose
