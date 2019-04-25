@@ -1,4 +1,4 @@
-# smart-hive ![](media/final/bee_icon.png)
+# smart-hive [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 
 The goal of this project is to collect, store, and visualize data about honeybee colonies. The visualization is available at [smart-hive.herokuapp.com](https://smart-hive.herokuapp.com/).
 
